@@ -1,7 +1,8 @@
 from __future__ import print_function
 import random
 import time
-from utils import read_args, file_output
+from utils import *
+import matplotlib.pyplot as plt
 from functions import *
 
 
@@ -15,7 +16,7 @@ class Swarm:
         self.pos = []
         self.vel = []
 
-        self.err = []        
+        self.err = []
         self.err_best = []
 
         if x0:
@@ -40,19 +41,19 @@ class Swarm:
                     x.append(random.uniform(bounds[j][0], bounds[j][1]))
                 self.vel.append(v)
                 self.pos.append(x)
-    
+
         self.pos_best = self.pos
         self.bounds = bounds
         self.err_best_g = float('inf')
         self.pos_best_g = self.pos[0][0]
 
-    def evaluate(self):
+    def evaluate(self,fn):
 
         for i in range(self.n):
 
-            self.err[i] = fn1(self.pos[i])
+            self.err[i] = fn(self.pos[i])
 
-    def update(self,args):
+    def update(self, args):
 
         for j in range(self.n):
 
@@ -68,22 +69,22 @@ class Swarm:
 
                 # Update Pos
                 self.pos[j][i] += self.vel[j][i]
-                
+
                 if self.pos[j][i] > self.bounds[i][1]:
                     self.pos[j][i] = self.bounds[i][1]
 
                 if self.pos[j][i] < self.bounds[i][0]:
                     self.pos[j][i] = self.bounds[i][0]
 
-    def run(self, args):
+    def run(self,fn, args):
         i = 0
         while i < args.i:
 
-            self.evaluate()
+            self.evaluate(fn)
 
             for j in range(self.n):
 
-                if self.err[j] < self.err_best_g :
+                if self.err[j] < self.err_best_g:
                     self.pos_best_g = self.pos[j]
                     self.err_best_g = self.err[j]
 
@@ -97,11 +98,15 @@ class Swarm:
 
 if __name__ == "__main__":
 
+    print("Running Benchmark... ")
+    args = read_args()
+
+    print("Tunning:\t", args.bench_name, "\nSteps:\t",
+          args.bench_step, "\t(from,to)\t", args.bench_start, args.bench_end)
     initial = []
     bounds = []
 
-    args = read_args()
-
+    
     if args.fn == 1:
         fn = fn1
     else:
@@ -112,17 +117,89 @@ if __name__ == "__main__":
     for i in range(args.d):
         initial.append(args.x0)
         bounds.append(box_limit)
+        
+    benchmark_t = []
+    benchmark_t_min = []
+    benchmark_t_max = []
 
-    pso = Swarm(args, bounds)
+    benchmark_s = []
+    benchmark_s_min = []
+    benchmark_s_max = []
+    
+    axis_x = []
+    
+    tune =  args.bench_start
+    update = 0
 
-    start = time.time()
-    solution = pso.run( args)
-    t = (time.time() - start)
+    while tune <=  args.bench_end:
+        
+        args,tune=update_bench(args,update)
+        update +=1
+        axis_x.append(tune)
 
-    print('\npso.run time: ', t*1000, 'ms')
-    print('*'*30)
-    print('SOLUTION:\t', solution)
-    print('*'*30)
+        total_t = []
+        max_t = float('-inf')
+        min_t = float('inf')
 
-    if args.file:
+        total_s = []
+        max_s = float('-inf')
+        min_s = float('inf')
+        for i in range(args.loops):
+            pso = Swarm(args, bounds)
+            start = time.time()
+            solution = pso.run(fn,args)
+            t = (time.time() - start)
+            if t < min_t:
+                min_t = t
+            if t > max_t:
+                max_t = t
+            if solution < min_s:
+                min_s = solution
+            if solution > max_s:
+                max_s = solution
+            total_t.append(t)
+            total_s.append(solution)
+
+        benchmark_t.append(sum(total_t)/len(total_t))
+        benchmark_t_min.append(min_t)
+        benchmark_t_max.append(max_t)
+        
+        benchmark_s.append(sum(total_s)/len(total_s))
+        benchmark_s_min.append(min_s)
+        benchmark_s_max.append(max_s)
+
         file_output(args, t, solution)
+        """
+            pso = Swarm(args, bounds)
+            start = time.time()
+            solution = pso.run(args)
+            t = (time.time() - start)
+            if t < min_t:
+                min_t = t
+            if t > max_t:
+                max_t = t
+            total_t.append(t)
+
+        benchmark.append(sum(total_t)/len(total_t))
+        benchmark_min.append(min_t)
+        benchmark_max.append(max_t)
+        file_output(args, t, solution)
+        """
+       
+        
+    #Matlib Plot
+    plt.subplot(2, 1, 1)
+    plt.plot(axis_x,benchmark_t_min)
+    plt.plot(axis_x,benchmark_t)
+    plt.plot(axis_x,benchmark_t_max)
+    plt.title('PSO ' + args.bench_name + ' vs Time')
+    plt.ylabel('Time (ms)')
+        
+    plt.subplot(2, 1, 2)
+    plt.plot(axis_x,benchmark_s_min)
+    plt.plot(axis_x,benchmark_s)
+    plt.plot(axis_x,benchmark_s_max)
+    plt.ylabel('Error')
+    plt.xlabel(args.bench_name)
+           
+    plt.show()
