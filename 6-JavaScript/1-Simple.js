@@ -200,8 +200,7 @@ function main() {
         bounds.push(box_limit);
     }
 
-     var pso = new Swarm(args, bounds);
-
+    var pso = new Swarm(args, bounds);
 
     console.log('*****************************');
     console.time('pso.run');
@@ -211,9 +210,6 @@ function main() {
     console.log('SOLUTION:\t', solution.value);
     console.log('*****************************');
 
-    /*
-    if args.file:
-        file_output(args, t, solution)*/
 
 };
 
