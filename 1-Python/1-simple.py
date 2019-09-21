@@ -92,7 +92,7 @@ class Swarm:
                 print("#", i+1, "\tBest Solution:\t ", self.err_best_g)
             i += 1
 
-        return self.err_best_g
+        return self.err_best_g ,self.pos_best_g 
 
 
 if __name__ == "__main__":
@@ -116,12 +116,13 @@ if __name__ == "__main__":
     pso = Swarm(args, bounds)
 
     start = time.time()
-    solution = pso.run( args)
+    solution ,solution_pos = pso.run( args)
     t = (time.time() - start)
 
     print('\npso.run time: ', t*1000, 'ms')
     print('*'*30)
-    print('SOLUTION:\t', solution)
+    print('SOLUTION:\t', solution_pos)
+    print('ERROR:\t', solution)
     print('*'*30)
 
     if args.file:

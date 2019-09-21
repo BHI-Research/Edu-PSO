@@ -17,7 +17,7 @@ def read_args():
     # n
     parser.add_argument('-n',  type=int, default=50, help="Swarm size")
     # d
-    parser.add_argument('-d',  type=int, default=10, help="Dimensions")
+    parser.add_argument('-d',  type=int, default=5, help="Dimensions")
     # i
     parser.add_argument('-i',  type=int, default=50, help="Iterations")
     # box
@@ -28,7 +28,7 @@ def read_args():
     # fn
     parser.add_argument('-fn',  type=int, default=1, help="Cost function id")
     # loops
-    parser.add_argument('-loops',  type=int, default=5,
+    parser.add_argument('-loops',  type=int, default=15,
                         help="Loops (Benchmark)")
     # Verbose
     parser.add_argument('--verbose',  action='store_true',
