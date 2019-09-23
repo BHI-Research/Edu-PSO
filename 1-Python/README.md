@@ -21,3 +21,8 @@ sh benchmark.sh
 ![Bechmark Graph](https://raw.githubusercontent.com/BHI-Research/Edu-PSO/master/1-Python/Figures/fig5.PNG)
 
 
+
+
+
+[![BHI|Research Group](https://github.com/BHI-Research/Edu-PSO/blob/master/DEMO/logoBHI.png?raw=true)](https://bhi-research.github.io/)
+
