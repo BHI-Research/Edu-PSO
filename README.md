@@ -1,12 +1,12 @@
 # Edu-PSO
 
-[BHI|Research Group](https://github.com/BHI-Research/Edu-PSO/blob/master/DEMO/logoBHI.png?raw=true)
+[![BHI|Research Group](https://github.com/BHI-Research/Edu-PSO/blob/master/DEMO/logoBHI.png?raw=true)](https://bhi-research.github.io/)
 
 ### Introduction
 
 Particle Swarm Optimization (PSO) is a metaheuristic inspired on the behavior of a group of animals in the search for food. The algorithm offers opportunities not only as a research subject, but also as a remarkable parallel and distributed computing educational tool. As a parallel processing implementation, particles offers an excellent metaphor for concurrent entities. From the educational point of view, positions, velocities and forces are simple concepts to understand. In this work we present the educational benefits of PSO and we show some challenges in the implementation of the algorithm in hardware accelerators.
 
-[Edu-PSO|Particle](https://github.com/BHI-Research/Edu-PSO/blob/master/img/parti.png?raw=true)
+[![Edu-PSO|Particle](https://github.com/BHI-Research/Edu-PSO/blob/master/img/part.png?raw=true)]
 
 ### Demo
 
@@ -54,10 +54,6 @@ Pseudocode:
 
 
 
-[![BHI|Research Group](https://github.com/BHI-Research/Edu-PSO/blob/master/DEMO/logBHI.png?raw=true)](https://bhi-research.github.io/)
+[![BHI|Research Group](https://github.com/BHI-Research/Edu-PSO/blob/master/DEMO/logoBHI.png?raw=true)](https://bhi-research.github.io/)
 
-
-
-
-`
 
