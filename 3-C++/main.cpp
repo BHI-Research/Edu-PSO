@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 
     if(guardado==NULL)
     {
-       printf("ERROR AL CREAR EL ARCHIVO !!\n");
+       printf("Error creating the file!!\n");
     }
 
 

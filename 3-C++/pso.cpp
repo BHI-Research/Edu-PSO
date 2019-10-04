@@ -36,14 +36,14 @@ void pso_set_default_settings(pso_settings_t *settings) {
 
     // set some default values
     printf("\n");
-    printf("Ingrese cantidad de dimensiones: ");
+    printf("How many dimensions? ");
     scanf("%d",&(settings->dim));
     settings->x_lo = -20;
     settings->x_hi = 20;
     settings->goal = 1e-5;
-    printf("Ingrese cantidad de particulas: ");
+    printf("How many particles? ");
     scanf("%d",&(settings->size));
-    printf("Ingrese cantidad maxima de pasos: ");
+    printf("How many steps? ");
     scanf("%d",&(settings->steps));
     printf("\n");
     settings->print_every = 1000;
@@ -163,17 +163,17 @@ void pso_solve(pso_obj_fun_t obj_fun, void *obj_fun_params,pso_result_t *solutio
         memmove((void *)solution->gbest, (void *)&pos_b[minfit],sizeof(double) * settings->dim);
     }
     printf("\n");
-    printf("Mejor posicion conocida: [");
+    printf("Best position: [");
     for (dim_id=0; dim_id<settings->dim; dim_id++) {
         printf("%lf,", solution->gbest[dim_id]);
     }
     printf("]\n\n");
-    printf("Fit Global de la mejor posicion= %lf\n",gbfitness);
+    printf("Best global fit: %lf\n",gbfitness);
     printf("\n");
     simulation_time = read_timer() - simulation_time;
     //copio en el archivo de texto las particulas, dimensiones y tiempo
     fprintf( guardado,"%d, %g\t                 %d, %g\n" ,settings->size,simulation_time,settings->dim,simulation_time);
-    printf("Tiempo de ejecucion = %g segundos\n",simulation_time);
+    printf("Execution time: %g seconds\n", simulation_time);
 }
 
 
