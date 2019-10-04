@@ -3,16 +3,14 @@ mkdir build
 cd build/
 cmake ..
 make
+echo -n "How many times you want to execute PSO? "
+read executions
 echo
-echo -n "Ingrese cantidad de corridas:  "
-read corridas
-echo
-for i in $(seq 1 $corridas); do 
-            echo " corrida N° $i: "
-            echo
-            ./application -o resultado_serie.txt
-            echo
+for i in $(seq 1 $executions); do
+    echo " Execution N° $i: "
+    echo
+    ./application -o output.txt
+    echo
 done
-echo "Fin del programa SERIE"
-echo
+echo "Done."
 cd ..
