@@ -5,7 +5,6 @@ A simple parallel OpenMP implementation of PSO written in C++.
 By just running the run.sh script you will compile and execute this PSO implementation. Make sure to have cmake installed first. The generated binary files will be located at /build.
 
 $ sh run.sh
-run.sh: 1: run.sh: #!/bin/bash: not found
 -- The C compiler identification is GNU 7.4.0
 -- The CXX compiler identification is GNU 7.4.0
 -- Check for working C compiler: /usr/bin/cc
@@ -22,9 +21,9 @@ run.sh: 1: run.sh: #!/bin/bash: not found
 -- Detecting CXX compile features - done
 CMake Warning (dev) at /usr/share/cmake-3.10/Modules/FindOpenMP.cmake:310 (if):
   if given arguments:
-
+    
     "TRUE"
-
+    
   An argument named "TRUE" appears in a conditional statement.  Policy
   CMP0012 is not set: if() recognizes numbers and boolean constants.  Run
   "cmake --help-policy CMP0012" for policy details.  Use the cmake_policy
