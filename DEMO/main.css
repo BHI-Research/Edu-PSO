@@ -1,0 +1,100 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto&display=swap);
+
+* {
+    margin: 0;
+    padding: 0
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    font-family: 'Roboto', sans-serif
+}
+
+img {
+    max-width: 50vw;
+}
+
+.logo {
+
+    position: absolute;
+    right: 3vw;
+    bottom: 3vh;
+
+
+}
+
+.logo img {
+    width: 10vw;
+}
+
+.stats {
+    background: rgba(80, 80, 80, 0.75);
+    background: -moz-radial-gradient(circle, rgba(80, 80, 80, 0.75) 0%, rgba(34, 34, 34, 0.75) 100%);
+    background: -webkit-radial-gradient(circle, rgba(80, 80, 80, 0.75) 0%, rgba(34, 34, 34, 0.75) 100%);
+    background: radial-gradient(circle, rgba(80, 80, 80, 0.75) 0%, rgba(34, 34, 34, 0.75) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#505050", endColorstr="#222222", GradientType=1);
+    color: #fff;
+
+    position: absolute;
+    bottom: 4vh;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 10vw;
+    min-width: 30vw;
+    border-radius: 0 25px 25px 0;
+
+}
+
+.stats table {
+
+    width: 80%;
+
+
+    text-align: right;
+}
+
+
+
+.args {
+    background: rgba(80, 80, 80, 0.75);
+    background: -moz-radial-gradient(circle, rgba(80, 80, 80, 0.75) 0%, rgba(34, 34, 34, 0.75) 100%);
+    background: -webkit-radial-gradient(circle, rgba(80, 80, 80, 0.75) 0%, rgba(34, 34, 34, 0.75) 100%);
+    background: radial-gradient(circle, rgba(80, 80, 80, 0.75) 0%, rgba(34, 34, 34, 0.75) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#505050", endColorstr="#222222", GradientType=1);
+    color: #fff;
+    position: absolute;
+    top: 4vh;
+    right: 0;
+    font-size: 120%;
+    padding: 2vh 2vw;
+    min-width: 10vw;
+    line-height: 200%;
+    border-radius: 25px 0 0 25px;
+
+
+}
+
+.args table {
+    width: 100%;
+}
+
+.args input {
+    padding-top: 3px;
+    color: #fff;
+    border: none;
+    background: none;
+    border-width: 0 0 2px 0;
+    text-align: center;
+    border-color: #FDEB68;
+    border-style: solid;
+    font-size: 110%;
+    width: 100px;
+
+
+}
