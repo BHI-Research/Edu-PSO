@@ -4,6 +4,7 @@ A simple parallel OpenMP implementation of PSO written in C++.
 # How to run
 By just running the run.sh script you will compile and execute this PSO implementation. Make sure to have cmake installed first. The generated binary files will be located at /build.
 
+```
 $ sh run.sh
 -- The C compiler identification is GNU 7.4.0
 -- The CXX compiler identification is GNU 7.4.0
@@ -78,6 +79,6 @@ Execution time: 0.002407 segundos
 
 
 Done.
-
+```
 
 [![BHI|Research Group](https://github.com/BHI-Research/Edu-PSO/blob/master/DEMO/logoBHI.png?raw=true)](https://bhi-research.github.io/)
